@@ -32,7 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  final String _baseUrl = 'https://lms-j25h.onrender.com/api/auth/register'; // Replace with your backend URL
+  final String _baseUrl = 'https://lms-j25h.onrender.com/api/auth/register'; 
 
   Future<void> _createAccount() async {
     if (_formKey.currentState!.validate()) {
@@ -41,10 +41,10 @@ class _SignUpPageState extends State<SignUpPage> {
         "email": _emailController.text,
         "password": _passwordController.text,
         "confirmPassword": _confirmPasswordController.text,
-        "username": _usernameController.text, // Assuming username is part of the payload
+        "username": _usernameController.text, 
         "userPhoto": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dreamstime.com%2Fphotos-images%2Fperson-male-portrait.html&psig=AOvVaw37jXxIDkm9wtidDBdO3jS_&ust=1732502623556000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOCQyK3584kDFQAAAAAdAAAAABAE", // Optional
-        "description": "A passionate coder", // Optional
-        "dateOfBirth": "2000-01-01", // Replace or get this dynamically
+        "description": "A passionate coder", 
+        "dateOfBirth": "2000-01-01", 
       };
 
       try {
@@ -63,19 +63,19 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           );
 
-          // Navigate to Login Screen
+          
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => LoginScreen()),
           );
 
-          // Clear form fields
+        
           _usernameController.clear();
           _emailController.clear();
           _passwordController.clear();
           _confirmPasswordController.clear();
         } else if (response.statusCode == 400) {
-          // Validation error
+          
           final errorResponse = json.decode(response.body);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -84,7 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           );
         } else if (response.statusCode == 500) {
-          // Server error
+          
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Server Error. Please try again later.'),
@@ -100,7 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
           );
         }
       } catch (error) {
-        // Network or other unexpected error
+        
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Error: $error'),
@@ -109,7 +109,7 @@ class _SignUpPageState extends State<SignUpPage> {
         );
       }
     } else {
-      // Validation errors
+      
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Please correct the errors in the form'),
